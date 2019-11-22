@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+
+  coredns:
+    image: coredns/coredns
+    command: -conf /root/Corefile
+    restart: always    
+    secrets:
+      - source: corefile
+        target: /root/Corefile
+    ports:
+      - "127.0.0.1:53:53/udp"
+
+  dnstap:
+    image: mattjtodd/dnstap
+    build: ./
+    command: -j -l 0.0.0.0:8053 -w -
+    restart: always
+    network_mode: service:coredns
+        
+secrets:
+  corefile:
+    file: ./Corefile

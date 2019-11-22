@@ -1,0 +1,15 @@
+.:53 {
+    hosts {
+        10.0.0.1 example.org
+        fallthrough
+    }
+    forward . tls://1.1.1.1 tls://1.0.0.1 {
+       tls_servername cloudflare-dns.com
+       health_check 5s
+    }
+    dnstap tcp://127.0.0.1:8053 full
+    cache
+    log
+    errors
+}
+
