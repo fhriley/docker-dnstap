@@ -31,5 +31,5 @@ It can easily be rebuilt locally should you need to test something by running
 
 ## Notes
 
-* The configuration for the CoreDNS dnstap plugin doesn't allow for a DNS name to be used for the tcp connection so the dnstap service shares the namespace of the CoreDNS service to allow this over the loopback interface, which is similar to how a pod works in Kubernetes (Side Car Pattern).
+* The configuration for the CoreDNS dnstap plugin doesn't allow for a DNS name to be used for the tcp connection so the dnstap service shares the namespace of the CoreDNS service to allow this over the loopback interface, which is similar to how a pod works in Kubernetes (Side Car Pattern).  This is defined in the compose file using `network_mode: service:coredns` in the dnstap service block.
 
