@@ -1,4 +1,4 @@
-FROM golang@sha256:679fe3791d2710d53efe26b05ba1c7083178d6375318b0c669b6bcd98f25c448 AS builder
+FROM golang:1.14-alpine AS builder
 
 ARG TAG=v0.2.0
 ARG URI=github.com/dnstap/golang-dnstap/dnstap@$TAG
